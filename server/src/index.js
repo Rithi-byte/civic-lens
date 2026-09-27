@@ -25,7 +25,14 @@ if (!process.env.JWT_SECRET) {
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }));
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+    // Map tile servers require a Referer header; helmet's default "no-referrer" gets tiles blocked
+    referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
+  })
+);
 app.use(cors({ origin: process.env.CLIENT_URL || true }));
 app.use(compression());
 app.use(express.json({ limit: '5mb' }));
@@ -44,7 +51,7 @@ const clientDist = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '.
 if (fs.existsSync(clientDist)) {
   app.use(express.static(clientDist, { maxAge: '1h', index: false }));
   app.use((req, res, next) => {
-    if (req.method !== 'GET') return next();
+    if (req.method !== 'GET' && req.method !== 'HEAD') return next();
     res.sendFile(path.join(clientDist, 'index.html'));
   });
 }
