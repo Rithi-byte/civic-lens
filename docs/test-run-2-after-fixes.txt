@@ -1,0 +1,408 @@
+
+> civiclens@1.0.0 test
+> npm test --prefix server
+
+
+> civiclens-server@1.0.0 test
+> node --test --test-concurrency=1 test/*.test.js
+
+TAP version 13
+# Downloading MongoDB "8.2.6": 0% (0mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 2.4% (18.8mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 4.9% (38.6mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 7.4% (57.8mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 10% (77.8mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 12.5% (97.3mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 15% (116.9mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 17.5% (136.7mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 19.9% (155.5mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 22.5% (175.4mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 24.8% (193.9mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 27.1% (211.5mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 29.7% (232.2mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 32.2% (251.4mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 34.7% (271.3mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 37.3% (291.2mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 39.4% (307.6mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 42% (327.7mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 44.6% (348.3mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 47.2% (368.7mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 49.8% (388.9mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 52.1% (407.3mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 54.5% (425.6mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 57.1% (446.1mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 59.9% (467.8mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 62.6% (489.3mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 65.1% (508.7mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 67.9% (530.2mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 70.7% (552.1mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 73.4% (573.6mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 76.2% (595.3mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 78.2% (610.5mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 80.8% (631.2mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 83.6% (653.1mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 86% (671.7mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 87.5% (683.8mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 89.1% (695.9mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 90.4% (706.3mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 91.9% (717.5mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 93.5% (730.3mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 95.7% (747.1mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 97.4% (761.1mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 99% (773mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 100% (781.1mb / 781.1mb)[0G
+# Downloading MongoDB "8.2.6": 100% (0mb / 0mb)[0G
+# ✔ Seeded 10 users and 20 issues (password for all: password123)
+# Subtest: 1. Health, routing & security headers
+    # Subtest: TC01 GET /api/health returns ok
+    ok 1 - TC01 GET /api/health returns ok
+      ---
+      duration_ms: 4.392
+      ...
+    # Subtest: TC02 unknown API route returns a JSON 404
+    ok 2 - TC02 unknown API route returns a JSON 404
+      ---
+      duration_ms: 5.5763
+      ...
+    # Subtest: TC03 security headers are set
+    ok 3 - TC03 security headers are set
+      ---
+      duration_ms: 5.2685
+      ...
+    1..3
+ok 1 - 1. Health, routing & security headers
+  ---
+  duration_ms: 92341.8876
+  type: 'suite'
+  ...
+# Subtest: 2. Authentication
+    # Subtest: TC04 citizen can register; password is never returned
+    ok 1 - TC04 citizen can register; password is never returned
+      ---
+      duration_ms: 87.3887
+      ...
+    # Subtest: TC05 registering cannot self-assign the admin role
+    ok 2 - TC05 registering cannot self-assign the admin role
+      ---
+      duration_ms: 89.1855
+      ...
+    # Subtest: TC06 duplicate email is rejected with 409
+    ok 3 - TC06 duplicate email is rejected with 409
+      ---
+      duration_ms: 91.0016
+      ...
+    # Subtest: TC07 invalid email / short password return 400 with a clear message
+    ok 4 - TC07 invalid email / short password return 400 with a clear message
+      ---
+      duration_ms: 8.4838
+      ...
+    # Subtest: TC08 wrong password returns 401
+    ok 5 - TC08 wrong password returns 401
+      ---
+      duration_ms: 91.9422
+      ...
+    # Subtest: TC09 unknown email gives the same message (no account enumeration)
+    ok 6 - TC09 unknown email gives the same message (no account enumeration)
+      ---
+      duration_ms: 93.4978
+      ...
+    # Subtest: TC10 /auth/me rejects missing and forged tokens
+    ok 7 - TC10 /auth/me rejects missing and forged tokens
+      ---
+      duration_ms: 14.0316
+      ...
+    # Subtest: TC11 NoSQL-injection payload in login is rejected
+    ok 8 - TC11 NoSQL-injection payload in login is rejected
+      ---
+      duration_ms: 4.3359
+      ...
+    1..8
+ok 2 - 2. Authentication
+  ---
+  duration_ms: 480.6986
+  type: 'suite'
+  ...
+# Subtest: 3. Browsing, search & filters (public)
+    # Subtest: TC12 issue list works without login and is paginated
+    ok 1 - TC12 issue list works without login and is paginated
+      ---
+      duration_ms: 15.4311
+      ...
+    # Subtest: TC13 category filter returns only that category
+    ok 2 - TC13 category filter returns only that category
+      ---
+      duration_ms: 7.7869
+      ...
+    # Subtest: TC14 status=open returns only unresolved issues
+    ok 3 - TC14 status=open returns only unresolved issues
+      ---
+      duration_ms: 12.1111
+      ...
+    # Subtest: TC15 full-text search finds matching issues
+    ok 4 - TC15 full-text search finds matching issues
+      ---
+      duration_ms: 6.6183
+      ...
+    # Subtest: TC16 sort=top orders by upvotes (descending)
+    ok 5 - TC16 sort=top orders by upvotes (descending)
+      ---
+      duration_ms: 13.6847
+      ...
+    # Subtest: TC17 invalid filter values return 400
+    ok 6 - TC17 invalid filter values return 400
+      ---
+      duration_ms: 7.3617
+      ...
+    # Subtest: TC18 malformed id returns 400, unknown id returns 404
+    ok 7 - TC18 malformed id returns 400, unknown id returns 404
+      ---
+      duration_ms: 8.7954
+      ...
+    # Subtest: TC19 map endpoint returns coordinates for every issue
+    ok 8 - TC19 map endpoint returns coordinates for every issue
+      ---
+      duration_ms: 7.1272
+      ...
+    1..8
+ok 3 - 3. Browsing, search & filters (public)
+  ---
+  duration_ms: 79.4699
+  type: 'suite'
+  ...
+# Subtest: 4. Reporting an issue
+    # Subtest: TC20 anonymous users cannot report
+    ok 1 - TC20 anonymous users cannot report
+      ---
+      duration_ms: 3.7313
+      ...
+    # Subtest: TC21 authorities cannot file reports (citizens only)
+    ok 2 - TC21 authorities cannot file reports (citizens only)
+      ---
+      duration_ms: 5.42
+      ...
+    # Subtest: TC22 missing / too-short fields return 400
+    ok 3 - TC22 missing / too-short fields return 400
+      ---
+      duration_ms: 6.6377
+      ...
+    # Subtest: TC23 non-image uploads are rejected
+    ok 4 - TC23 non-image uploads are rejected
+      ---
+      duration_ms: 6.5803
+      ...
+    # Subtest: TC24 valid report is created, auto-upvoted and routed to the department
+    ok 5 - TC24 valid report is created, auto-upvoted and routed to the department
+      ---
+      duration_ms: 22.1693
+      ...
+    # Subtest: TC25 issue list does not embed full photos (served separately)
+    ok 6 - TC25 issue list does not embed full photos (served separately)
+      ---
+      duration_ms: 15.3519
+      ...
+    1..6
+ok 4 - 4. Reporting an issue
+  ---
+  duration_ms: 60.2695
+  type: 'suite'
+  ...
+# Subtest: 5. Resolution workflow (roles & transitions)
+    # Subtest: TC26 officer from another department cannot update it
+    ok 1 - TC26 officer from another department cannot update it
+      ---
+      duration_ms: 7.2791
+      ...
+    # Subtest: TC27 citizens cannot change status
+    ok 2 - TC27 citizens cannot change status
+      ---
+      duration_ms: 6.4814
+      ...
+    # Subtest: TC28 officer cannot skip steps (Reported → Resolved)
+    ok 3 - TC28 officer cannot skip steps (Reported → Resolved)
+      ---
+      duration_ms: 6.6938
+      ...
+    # Subtest: TC29 rejecting or resolving requires a note
+    ok 4 - TC29 rejecting or resolving requires a note
+      ---
+      duration_ms: 8.1624
+      ...
+    # Subtest: TC30 full valid path records history, sets resolvedAt and notifies the reporter
+    ok 5 - TC30 full valid path records history, sets resolvedAt and notifies the reporter
+      ---
+      duration_ms: 44.7682
+      ...
+    # Subtest: TC31 admin can reopen a resolved issue; resolvedAt is cleared
+    ok 6 - TC31 admin can reopen a resolved issue; resolvedAt is cleared
+      ---
+      duration_ms: 11.8293
+      ...
+    1..6
+ok 5 - 5. Resolution workflow (roles & transitions)
+  ---
+  duration_ms: 98.7039
+  type: 'suite'
+  ...
+# Subtest: 6. Assignment (admin)
+    # Subtest: TC32 admin assigns an active officer, who is notified
+    ok 1 - TC32 admin assigns an active officer, who is notified
+      ---
+      duration_ms: 20.6606
+      ...
+    # Subtest: TC33 cannot assign a non-authority user
+    ok 2 - TC33 cannot assign a non-authority user
+      ---
+      duration_ms: 7.4547
+      ...
+    # Subtest: TC34 cannot assign a deactivated officer
+    ok 3 - TC34 cannot assign a deactivated officer
+      ---
+      duration_ms: 9.8423
+      ...
+    # Subtest: TC35 only admins can assign
+    ok 4 - TC35 only admins can assign
+      ---
+      duration_ms: 8.3276
+      ...
+    1..4
+ok 6 - 6. Assignment (admin)
+  ---
+  duration_ms: 133.3712
+  type: 'suite'
+  ...
+# Subtest: 7. Upvotes & comments
+    # Subtest: TC36 upvote toggles on and off with a correct count
+    ok 1 - TC36 upvote toggles on and off with a correct count
+      ---
+      duration_ms: 44.1545
+      ...
+    # Subtest: TC37 empty and over-long comments are rejected
+    ok 2 - TC37 empty and over-long comments are rejected
+      ---
+      duration_ms: 11.152
+      ...
+    # Subtest: TC38 valid comment is saved with the author name
+    ok 3 - TC38 valid comment is saved with the author name
+      ---
+      duration_ms: 10.8823
+      ...
+    # Subtest: TC39 comment text containing HTML is stored as plain text
+    ok 4 - TC39 comment text containing HTML is stored as plain text
+      ---
+      duration_ms: 11.3682
+      ...
+    1..4
+ok 7 - 7. Upvotes & comments
+  ---
+  duration_ms: 80.274
+  type: 'suite'
+  ...
+# Subtest: 8. Deleting reports
+    # Subtest: TC40 another citizen cannot delete my report
+    ok 1 - TC40 another citizen cannot delete my report
+      ---
+      duration_ms: 6.4004
+      ...
+    # Subtest: TC41 I cannot delete once it has been acknowledged
+    ok 2 - TC41 I cannot delete once it has been acknowledged
+      ---
+      duration_ms: 7.2344
+      ...
+    # Subtest: TC42 I can delete my own report while it is still Reported; its notifications go too
+    ok 3 - TC42 I can delete my own report while it is still Reported; its notifications go too
+      ---
+      duration_ms: 12.439
+      ...
+    1..3
+ok 8 - 8. Deleting reports
+  ---
+  duration_ms: 55.9765
+  type: 'suite'
+  ...
+# Subtest: 9. User management (admin)
+    # Subtest: TC43 non-admins cannot list users
+    ok 1 - TC43 non-admins cannot list users
+      ---
+      duration_ms: 12.2995
+      ...
+    # Subtest: TC44 authority accounts need a department
+    ok 2 - TC44 authority accounts need a department
+      ---
+      duration_ms: 8.9672
+      ...
+    # Subtest: TC45 admin creates an officer who can then log in
+    ok 3 - TC45 admin creates an officer who can then log in
+      ---
+      duration_ms: 173.9521
+      ...
+# (node:16876) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+    # Subtest: TC46 deactivated users are locked out immediately
+    ok 4 - TC46 deactivated users are locked out immediately
+      ---
+      duration_ms: 189.0597
+      ...
+    # Subtest: TC47 admin cannot deactivate their own account
+    ok 5 - TC47 admin cannot deactivate their own account
+      ---
+      duration_ms: 7.4638
+      ...
+    1..5
+ok 9 - 9. User management (admin)
+  ---
+  duration_ms: 392.0735
+  type: 'suite'
+  ...
+# Subtest: 10. Stats & notifications
+    # Subtest: TC48 public stats add up
+    ok 1 - TC48 public stats add up
+      ---
+      duration_ms: 15.3934
+      ...
+    # Subtest: TC49 authority stats are scoped to their department
+    ok 2 - TC49 authority stats are scoped to their department
+      ---
+      duration_ms: 10.6883
+      ...
+    # Subtest: TC50 mark-all-read clears the unread badge
+    ok 3 - TC50 mark-all-read clears the unread badge
+      ---
+      duration_ms: 15.619
+      ...
+    1..3
+ok 10 - 10. Stats & notifications
+  ---
+  duration_ms: 41.9365
+  type: 'suite'
+  ...
+# Subtest: 11. Robustness
+    # Subtest: TC51 malformed JSON returns a friendly 400
+    ok 1 - TC51 malformed JSON returns a friendly 400
+      ---
+      duration_ms: 5.5903
+      ...
+    # Subtest: TC52 oversized request body returns 413
+    ok 2 - TC52 oversized request body returns 413
+      ---
+      duration_ms: 33.9289
+      ...
+    # Subtest: TC53 repeated failed logins are rate-limited (brute-force protection)
+    ok 3 - TC53 repeated failed logins are rate-limited (brute-force protection)
+      ---
+      duration_ms: 450.0933
+      ...
+    1..3
+ok 11 - 11. Robustness
+  ---
+  duration_ms: 489.8594
+  type: 'suite'
+  ...
+1..11
+# tests 53
+# suites 11
+# pass 53
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 122023.0631

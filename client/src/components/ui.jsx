@@ -73,7 +73,7 @@ export const StatCard = ({ label, value, icon: Icon, tone = 'text-brand-600 bg-b
     <div>
       <p className="text-2xl font-bold text-slate-900">{value ?? '–'}</p>
       <p className="text-sm text-slate-500">{label}</p>
-      {hint && <p className="text-xs text-slate-400">{hint}</p>}
+      {hint && <p className="text-xs text-slate-500">{hint}</p>}
     </div>
   </div>
 );

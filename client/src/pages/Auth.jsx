@@ -72,7 +72,7 @@ export function Login() {
         New here? <Link to="/register" className="font-semibold text-brand-600">Create a citizen account</Link>
       </p>
       <div className="mt-6 border-t border-slate-100 pt-4">
-        <p className="mb-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-400">Demo accounts (one click)</p>
+        <p className="mb-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-500">Demo accounts (one click)</p>
         <div className="grid grid-cols-3 gap-2">
           {DEMO.map(([label, email]) => (
             <button

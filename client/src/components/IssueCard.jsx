@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MapPin, ThumbsUp, MessageSquare } from 'lucide-react';
 import { CATEGORIES, timeAgo } from '../lib/constants';
+import api from '../lib/api';
 import { StatusBadge, CategoryBadge, PriorityBadge } from './ui';
 
 export default function IssueCard({ issue }) {
@@ -13,8 +14,13 @@ export default function IssueCard({ issue }) {
       className="card group flex flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-md"
     >
       <div className="relative h-40 overflow-hidden bg-slate-100">
-        {issue.image ? (
-          <img src={issue.image} alt="" className="h-full w-full object-cover transition group-hover:scale-105" />
+        {issue.hasImage ? (
+          <img
+            src={`${api.defaults.baseURL}/issues/${issue._id}/image`}
+            alt=""
+            loading="lazy"
+            className="h-full w-full object-cover transition group-hover:scale-105"
+          />
         ) : (
           <div
             className="flex h-full items-center justify-center"

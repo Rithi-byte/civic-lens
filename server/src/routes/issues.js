@@ -108,12 +108,14 @@ router.get('/', optionalAuth, validate(listSchema, 'query'), async (req, res) =>
           upvoteCount: { $size: '$upvotes' },
           commentCount: { $size: '$comments' },
           priorityRank: { $indexOfArray: [PRIORITIES, '$priority'] },
+          hasImage: { $gt: [{ $strLenCP: { $ifNull: ['$image', ''] } }, 0] },
         },
       },
       { $sort: SORTS[q.sort] },
       { $skip: skip },
       { $limit: q.limit },
-      { $project: { comments: 0, history: 0 } },
+      // Photos are served by GET /:id/image so the list stays small and images can be cached
+      { $project: { comments: 0, history: 0, image: 0 } },
       { $lookup: { from: 'users', localField: 'reporter', foreignField: '_id', as: 'reporter', pipeline: [{ $project: { name: 1 } }] } },
       { $lookup: { from: 'users', localField: 'assignedTo', foreignField: '_id', as: 'assignedTo', pipeline: [{ $project: { name: 1, department: 1 } }] } },
       { $addFields: { reporter: { $first: '$reporter' }, assignedTo: { $first: '$assignedTo' } } },
@@ -137,6 +139,15 @@ router.get('/map', async (_req, res) => {
     .limit(1000)
     .lean();
   res.json(points);
+});
+
+// GET /api/issues/:id/image - the issue photo as a real, browser-cacheable image file
+router.get('/:id/image', async (req, res) => {
+  const issue = await Issue.findById(req.params.id).select('image').lean();
+  const match = issue?.image?.match(/^data:(image\/(?:png|jpe?g|webp));base64,(.+)$/);
+  if (!match) throw new HttpError(404, 'This issue has no photo');
+  res.set('Cache-Control', 'public, max-age=86400, immutable');
+  res.type(match[1]).send(Buffer.from(match[2], 'base64'));
 });
 
 router.get('/:id', optionalAuth, async (req, res) => {
@@ -204,8 +215,8 @@ router.patch('/:id/assign', requireAuth, requireRole('admin'), validate(assignSc
 
   if (req.body.assignedTo !== undefined) {
     if (req.body.assignedTo) {
-      const officer = await User.findOne({ _id: req.body.assignedTo, role: 'authority' });
-      if (!officer) throw new HttpError(400, 'Selected officer does not exist');
+      const officer = await User.findOne({ _id: req.body.assignedTo, role: 'authority', active: true });
+      if (!officer) throw new HttpError(400, 'Selected officer does not exist or is deactivated');
       issue.assignedTo = officer._id;
       await notify([officer._id], `You were assigned: "${issue.title}"`, issue._id);
     } else {

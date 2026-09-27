@@ -43,6 +43,19 @@ npm run dev
 
 Open http://localhost:5173. The first start downloads a temporary MongoDB (about 1 minute). To use Atlas instead, copy `server/.env.example` to `server/.env` and set `MONGO_URI`.
 
+## Testing
+
+- **API tests:** 53 integration tests (Node test runner + Supertest + in-memory MongoDB)
+  ```bash
+  npm test
+  ```
+- **UI tests:** 25 end-to-end tests in real Chrome (Puppeteer), including responsive and axe-core accessibility checks. Start a throwaway server first (`MONGO_URI=` and `PORT=5055`), then:
+  ```bash
+  npm run test:e2e
+  ```
+
+Results and all fixes are documented in `docs/CivicLens_Test_Report.docx`.
+
 ## API overview
 
 | Method | Endpoint | Access |
@@ -50,7 +63,7 @@ Open http://localhost:5173. The first start downloads a temporary MongoDB (about
 | POST | `/api/auth/register`, `/api/auth/login` | Public |
 | GET | `/api/auth/me` | Logged in |
 | GET | `/api/issues?q=&category=&status=&sort=&page=&mine=&scope=` | Public |
-| GET | `/api/issues/map`, `/api/issues/:id` | Public |
+| GET | `/api/issues/map`, `/api/issues/:id`, `/api/issues/:id/image` | Public |
 | POST | `/api/issues` | Citizen |
 | PATCH | `/api/issues/:id/status` | Authority (own department), Admin |
 | PATCH | `/api/issues/:id/assign` | Admin |

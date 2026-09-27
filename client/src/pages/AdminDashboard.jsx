@@ -96,15 +96,15 @@ function AllIssues() {
     <div>
       <div className="mb-4 grid gap-3 md:grid-cols-[1fr_auto_auto]">
         <form onSubmit={(e) => { e.preventDefault(); set({ q: q.trim() }); }} className="relative">
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
-          <input className="input pl-9" placeholder="Search issues…" value={q} onChange={(e) => setQ(e.target.value)} />
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-500" />
+          <input className="input pl-9" aria-label="Search issues" placeholder="Search issues…" value={q} onChange={(e) => setQ(e.target.value)} />
         </form>
-        <select className="input" value={filters.status} onChange={(e) => set({ status: e.target.value })}>
+        <select className="input" aria-label="Filter by status" value={filters.status} onChange={(e) => set({ status: e.target.value })}>
           <option value="open">Open (needs action)</option>
           <option value="">All statuses</option>
           {Object.entries(STATUSES).map(([k, s]) => <option key={k} value={k}>{s.label}</option>)}
         </select>
-        <select className="input" value={filters.category} onChange={(e) => set({ category: e.target.value })}>
+        <select className="input" aria-label="Filter by category" value={filters.category} onChange={(e) => set({ category: e.target.value })}>
           <option value="">All categories</option>
           {Object.entries(CATEGORIES).map(([k, c]) => <option key={k} value={k}>{c.label}</option>)}
         </select>
@@ -200,10 +200,10 @@ function Users() {
       </div>
       <form onSubmit={create} className="card h-fit space-y-3 p-5" noValidate>
         <h3 className="flex items-center gap-2 font-semibold text-slate-900"><UserPlus className="h-5 w-5 text-brand-600" /> Add authority officer</h3>
-        <input className="input" placeholder="Full name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
-        <input className="input" type="email" placeholder="Official email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
-        <input className="input" type="password" placeholder="Temporary password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
-        <select className="input" value={form.department} onChange={(e) => setForm({ ...form, department: e.target.value })}>
+        <input className="input" aria-label="Full name" placeholder="Full name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+        <input className="input" type="email" aria-label="Official email" placeholder="Official email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+        <input className="input" type="password" aria-label="Temporary password" placeholder="Temporary password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
+        <select className="input" aria-label="Department" value={form.department} onChange={(e) => setForm({ ...form, department: e.target.value })}>
           {Object.entries(CATEGORIES).map(([k, c]) => <option key={k} value={k}>{c.label}</option>)}
         </select>
         <button className="btn-primary w-full" disabled={busy}>{busy ? 'Creating…' : 'Create officer'}</button>

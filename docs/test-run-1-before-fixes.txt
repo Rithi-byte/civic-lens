@@ -1,0 +1,444 @@
+
+> civiclens-server@1.0.0 test
+> node --test --test-concurrency=1 test/*.test.js
+
+TAP version 13
+# ✔ Seeded 10 users and 20 issues (password for all: password123)
+# Subtest: 1. Health, routing & security headers
+    # Subtest: TC01 GET /api/health returns ok
+    ok 1 - TC01 GET /api/health returns ok
+      ---
+      duration_ms: 5.9989
+      ...
+    # Subtest: TC02 unknown API route returns a JSON 404
+    ok 2 - TC02 unknown API route returns a JSON 404
+      ---
+      duration_ms: 5.4732
+      ...
+    # Subtest: TC03 security headers are set
+    ok 3 - TC03 security headers are set
+      ---
+      duration_ms: 7.0509
+      ...
+    1..3
+ok 1 - 1. Health, routing & security headers
+  ---
+  duration_ms: 2483.5082
+  type: 'suite'
+  ...
+# Subtest: 2. Authentication
+    # Subtest: TC04 citizen can register; password is never returned
+    ok 1 - TC04 citizen can register; password is never returned
+      ---
+      duration_ms: 90.3449
+      ...
+    # Subtest: TC05 registering cannot self-assign the admin role
+    ok 2 - TC05 registering cannot self-assign the admin role
+      ---
+      duration_ms: 91.8274
+      ...
+    # Subtest: TC06 duplicate email is rejected with 409
+    ok 3 - TC06 duplicate email is rejected with 409
+      ---
+      duration_ms: 87.0893
+      ...
+    # Subtest: TC07 invalid email / short password return 400 with a clear message
+    ok 4 - TC07 invalid email / short password return 400 with a clear message
+      ---
+      duration_ms: 8.4979
+      ...
+    # Subtest: TC08 wrong password returns 401
+    ok 5 - TC08 wrong password returns 401
+      ---
+      duration_ms: 88.3618
+      ...
+    # Subtest: TC09 unknown email gives the same message (no account enumeration)
+    ok 6 - TC09 unknown email gives the same message (no account enumeration)
+      ---
+      duration_ms: 97.725
+      ...
+    # Subtest: TC10 /auth/me rejects missing and forged tokens
+    ok 7 - TC10 /auth/me rejects missing and forged tokens
+      ---
+      duration_ms: 14.1564
+      ...
+    # Subtest: TC11 NoSQL-injection payload in login is rejected
+    ok 8 - TC11 NoSQL-injection payload in login is rejected
+      ---
+      duration_ms: 4.2377
+      ...
+    1..8
+ok 2 - 2. Authentication
+  ---
+  duration_ms: 483.1232
+  type: 'suite'
+  ...
+# Subtest: 3. Browsing, search & filters (public)
+    # Subtest: TC12 issue list works without login and is paginated
+    ok 1 - TC12 issue list works without login and is paginated
+      ---
+      duration_ms: 14.5056
+      ...
+    # Subtest: TC13 category filter returns only that category
+    ok 2 - TC13 category filter returns only that category
+      ---
+      duration_ms: 7.9532
+      ...
+    # Subtest: TC14 status=open returns only unresolved issues
+    ok 3 - TC14 status=open returns only unresolved issues
+      ---
+      duration_ms: 11.234
+      ...
+    # Subtest: TC15 full-text search finds matching issues
+    ok 4 - TC15 full-text search finds matching issues
+      ---
+      duration_ms: 6.25
+      ...
+    # Subtest: TC16 sort=top orders by upvotes (descending)
+    ok 5 - TC16 sort=top orders by upvotes (descending)
+      ---
+      duration_ms: 13.4015
+      ...
+    # Subtest: TC17 invalid filter values return 400
+    ok 6 - TC17 invalid filter values return 400
+      ---
+      duration_ms: 6.7525
+      ...
+    # Subtest: TC18 malformed id returns 400, unknown id returns 404
+    ok 7 - TC18 malformed id returns 400, unknown id returns 404
+      ---
+      duration_ms: 9.3286
+      ...
+    # Subtest: TC19 map endpoint returns coordinates for every issue
+    ok 8 - TC19 map endpoint returns coordinates for every issue
+      ---
+      duration_ms: 6.773
+      ...
+    1..8
+ok 3 - 3. Browsing, search & filters (public)
+  ---
+  duration_ms: 76.7464
+  type: 'suite'
+  ...
+# Subtest: 4. Reporting an issue
+    # Subtest: TC20 anonymous users cannot report
+    ok 1 - TC20 anonymous users cannot report
+      ---
+      duration_ms: 4.9149
+      ...
+    # Subtest: TC21 authorities cannot file reports (citizens only)
+    ok 2 - TC21 authorities cannot file reports (citizens only)
+      ---
+      duration_ms: 8.2328
+      ...
+    # Subtest: TC22 missing / too-short fields return 400
+    ok 3 - TC22 missing / too-short fields return 400
+      ---
+      duration_ms: 8.7051
+      ...
+    # Subtest: TC23 non-image uploads are rejected
+    ok 4 - TC23 non-image uploads are rejected
+      ---
+      duration_ms: 6.4773
+      ...
+    # Subtest: TC24 valid report is created, auto-upvoted and routed to the department
+    ok 5 - TC24 valid report is created, auto-upvoted and routed to the department
+      ---
+      duration_ms: 18.3641
+      ...
+    # Subtest: TC25 issue list does not embed full photos (served separately)
+    not ok 6 - TC25 issue list does not embed full photos (served separately)
+      ---
+      duration_ms: 9.7336
+      location: 'C:\\Users\\Admin\\Desktop\\4TH YEAR\\fsw\\vision2web\\server\\test\\api.test.js:185:3'
+      failureType: 'testCodeFailure'
+      error: |-
+        base64 image should not be in the list payload
+        + actual - expected
+        
+        + 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
+        - undefined
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      actual: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///C:/Users/Admin/Desktop/4TH%20YEAR/fsw/vision2web/server/test/api.test.js:189:12)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:980:9)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:677:7)
+      ...
+    1..6
+not ok 4 - 4. Reporting an issue
+  ---
+  duration_ms: 57.4569
+  type: 'suite'
+  location: 'C:\\Users\\Admin\\Desktop\\4TH YEAR\\fsw\\vision2web\\server\\test\\api.test.js:159:1'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: 5. Resolution workflow (roles & transitions)
+    # Subtest: TC26 officer from another department cannot update it
+    ok 1 - TC26 officer from another department cannot update it
+      ---
+      duration_ms: 9.3407
+      ...
+    # Subtest: TC27 citizens cannot change status
+    ok 2 - TC27 citizens cannot change status
+      ---
+      duration_ms: 5.7018
+      ...
+    # Subtest: TC28 officer cannot skip steps (Reported → Resolved)
+    ok 3 - TC28 officer cannot skip steps (Reported → Resolved)
+      ---
+      duration_ms: 7.7111
+      ...
+    # Subtest: TC29 rejecting or resolving requires a note
+    ok 4 - TC29 rejecting or resolving requires a note
+      ---
+      duration_ms: 6.7809
+      ...
+    # Subtest: TC30 full valid path records history, sets resolvedAt and notifies the reporter
+    ok 5 - TC30 full valid path records history, sets resolvedAt and notifies the reporter
+      ---
+      duration_ms: 48.6367
+      ...
+    # Subtest: TC31 admin can reopen a resolved issue; resolvedAt is cleared
+    ok 6 - TC31 admin can reopen a resolved issue; resolvedAt is cleared
+      ---
+      duration_ms: 11.8446
+      ...
+    1..6
+ok 5 - 5. Resolution workflow (roles & transitions)
+  ---
+  duration_ms: 102.6163
+  type: 'suite'
+  ...
+# Subtest: 6. Assignment (admin)
+    # Subtest: TC32 admin assigns an active officer, who is notified
+    ok 1 - TC32 admin assigns an active officer, who is notified
+      ---
+      duration_ms: 19.8864
+      ...
+    # Subtest: TC33 cannot assign a non-authority user
+    ok 2 - TC33 cannot assign a non-authority user
+      ---
+      duration_ms: 10.0239
+      ...
+    # Subtest: TC34 cannot assign a deactivated officer
+    not ok 3 - TC34 cannot assign a deactivated officer
+      ---
+      duration_ms: 13.0767
+      location: 'C:\\Users\\Admin\\Desktop\\4TH YEAR\\fsw\\vision2web\\server\\test\\api.test.js:255:3'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        200 !== 400
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 400
+      actual: 200
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///C:/Users/Admin/Desktop/4TH%20YEAR/fsw/vision2web/server/test/api.test.js:256:12)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:980:9)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:677:7)
+      ...
+    # Subtest: TC35 only admins can assign
+    ok 4 - TC35 only admins can assign
+      ---
+      duration_ms: 6.1597
+      ...
+    1..4
+not ok 6 - 6. Assignment (admin)
+  ---
+  duration_ms: 134.2831
+  type: 'suite'
+  location: 'C:\\Users\\Admin\\Desktop\\4TH YEAR\\fsw\\vision2web\\server\\test\\api.test.js:238:1'
+  failureType: 'subtestsFailed'
+  error: '1 subtest failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+# Subtest: 7. Upvotes & comments
+    # Subtest: TC36 upvote toggles on and off with a correct count
+    ok 1 - TC36 upvote toggles on and off with a correct count
+      ---
+      duration_ms: 36.6097
+      ...
+    # Subtest: TC37 empty and over-long comments are rejected
+    ok 2 - TC37 empty and over-long comments are rejected
+      ---
+      duration_ms: 12.1396
+      ...
+    # Subtest: TC38 valid comment is saved with the author name
+    ok 3 - TC38 valid comment is saved with the author name
+      ---
+      duration_ms: 11.4378
+      ...
+    # Subtest: TC39 comment text containing HTML is stored as plain text
+    ok 4 - TC39 comment text containing HTML is stored as plain text
+      ---
+      duration_ms: 10.0126
+      ...
+    1..4
+ok 7 - 7. Upvotes & comments
+  ---
+  duration_ms: 72.5829
+  type: 'suite'
+  ...
+# Subtest: 8. Deleting reports
+    # Subtest: TC40 another citizen cannot delete my report
+    ok 1 - TC40 another citizen cannot delete my report
+      ---
+      duration_ms: 7.4337
+      ...
+    # Subtest: TC41 I cannot delete once it has been acknowledged
+    ok 2 - TC41 I cannot delete once it has been acknowledged
+      ---
+      duration_ms: 6.2324
+      ...
+    # Subtest: TC42 I can delete my own report while it is still Reported; its notifications go too
+    ok 3 - TC42 I can delete my own report while it is still Reported; its notifications go too
+      ---
+      duration_ms: 12.3446
+      ...
+    1..3
+ok 8 - 8. Deleting reports
+  ---
+  duration_ms: 59.9253
+  type: 'suite'
+  ...
+# Subtest: 9. User management (admin)
+    # Subtest: TC43 non-admins cannot list users
+    ok 1 - TC43 non-admins cannot list users
+      ---
+      duration_ms: 13.3041
+      ...
+    # Subtest: TC44 authority accounts need a department
+    ok 2 - TC44 authority accounts need a department
+      ---
+      duration_ms: 6.0417
+      ...
+    # Subtest: TC45 admin creates an officer who can then log in
+    ok 3 - TC45 admin creates an officer who can then log in
+      ---
+      duration_ms: 176.7212
+      ...
+# (node:16940) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+    # Subtest: TC46 deactivated users are locked out immediately
+    ok 4 - TC46 deactivated users are locked out immediately
+      ---
+      duration_ms: 202.3532
+      ...
+    # Subtest: TC47 admin cannot deactivate their own account
+    ok 5 - TC47 admin cannot deactivate their own account
+      ---
+      duration_ms: 7.7717
+      ...
+    1..5
+ok 9 - 9. User management (admin)
+  ---
+  duration_ms: 406.5456
+  type: 'suite'
+  ...
+# Subtest: 10. Stats & notifications
+    # Subtest: TC48 public stats add up
+    ok 1 - TC48 public stats add up
+      ---
+      duration_ms: 15.705
+      ...
+    # Subtest: TC49 authority stats are scoped to their department
+    ok 2 - TC49 authority stats are scoped to their department
+      ---
+      duration_ms: 12.6623
+      ...
+    # Subtest: TC50 mark-all-read clears the unread badge
+    ok 3 - TC50 mark-all-read clears the unread badge
+      ---
+      duration_ms: 15.5474
+      ...
+    1..3
+ok 10 - 10. Stats & notifications
+  ---
+  duration_ms: 44.3776
+  type: 'suite'
+  ...
+# Subtest: 11. Robustness
+    # Subtest: TC51 malformed JSON returns a friendly 400
+    not ok 1 - TC51 malformed JSON returns a friendly 400
+      ---
+      duration_ms: 7.2725
+      location: 'C:\\Users\\Admin\\Desktop\\4TH YEAR\\fsw\\vision2web\\server\\test\\api.test.js:356:3'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        + actual - expected
+        
+        + 'Unexpected end of JSON input'
+        - 'Request body is not valid JSON'
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 'Request body is not valid JSON'
+      actual: 'Unexpected end of JSON input'
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///C:/Users/Admin/Desktop/4TH%20YEAR/fsw/vision2web/server/test/api.test.js:359:12)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:980:9)
+        async Promise.all (index 0)
+        async Suite.run (node:internal/test_runner/test:1358:7)
+        async Test.processPendingSubtests (node:internal/test_runner/test:677:7)
+      ...
+    # Subtest: TC52 oversized request body returns 413
+    ok 2 - TC52 oversized request body returns 413
+      ---
+      duration_ms: 50.6681
+      ...
+    # Subtest: TC53 repeated failed logins are rate-limited (brute-force protection)
+    not ok 3 - TC53 repeated failed logins are rate-limited (brute-force protection)
+      ---
+      duration_ms: 1273.648
+      location: 'C:\\Users\\Admin\\Desktop\\4TH YEAR\\fsw\\vision2web\\server\\test\\api.test.js:367:3'
+      failureType: 'testCodeFailure'
+      error: |-
+        Expected values to be strictly equal:
+        
+        401 !== 429
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected: 429
+      actual: 401
+      operator: 'strictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///C:/Users/Admin/Desktop/4TH%20YEAR/fsw/vision2web/server/test/api.test.js:373:12)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:980:9)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:677:7)
+      ...
+    1..3
+not ok 11 - 11. Robustness
+  ---
+  duration_ms: 1331.9777
+  type: 'suite'
+  location: 'C:\\Users\\Admin\\Desktop\\4TH YEAR\\fsw\\vision2web\\server\\test\\api.test.js:355:1'
+  failureType: 'subtestsFailed'
+  error: '2 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..11
+# tests 53
+# suites 11
+# pass 49
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 19012.566

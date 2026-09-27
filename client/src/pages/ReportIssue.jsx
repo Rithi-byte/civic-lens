@@ -127,7 +127,7 @@ export default function ReportIssue() {
             <textarea id="desc" className="input" rows={4} maxLength={2000} placeholder="What is the problem, since when, and how does it affect people?" value={form.description} onChange={set('description')} />
             <div className="flex justify-between">
               {errors.description ? <p className="field-error">{errors.description}</p> : <span />}
-              <span className="text-xs text-slate-400">{form.description.length}/2000</span>
+              <span className="text-xs text-slate-500">{form.description.length}/2000</span>
             </div>
           </div>
           <div>
@@ -138,7 +138,7 @@ export default function ReportIssue() {
                   type="button"
                   key={k}
                   onClick={() => setForm({ ...form, priority: k })}
-                  className={`rounded-full px-3 py-1 text-xs font-semibold ${form.priority === k ? p.bg + ' ring-2 ring-offset-1 ring-slate-300' : 'bg-slate-100 text-slate-500'}`}
+                  className={`rounded-full px-3 py-1 text-xs font-semibold ${form.priority === k ? p.bg + ' ring-2 ring-offset-1 ring-slate-300' : 'bg-slate-100 text-slate-600'}`}
                 >
                   {p.label}
                 </button>
@@ -158,7 +158,7 @@ export default function ReportIssue() {
               <label className="flex h-32 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-300 text-sm text-slate-500 hover:border-brand-500 hover:bg-brand-50">
                 <Camera className="mb-1 h-6 w-6" />
                 Click to upload or take a photo
-                <span className="text-xs text-slate-400">PNG, JPG or WEBP</span>
+                <span className="text-xs text-slate-500">PNG, JPG or WEBP</span>
                 <input type="file" accept="image/png,image/jpeg,image/webp" capture="environment" className="hidden" onChange={pickImage} />
               </label>
             )}

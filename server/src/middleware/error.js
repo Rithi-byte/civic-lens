@@ -36,6 +36,9 @@ export function errorHandler(err, _req, res, _next) {
   } else if (err.code === 11000) {
     status = 409;
     message = 'An account with this email already exists';
+  } else if (err.type === 'entity.parse.failed') {
+    status = 400;
+    message = 'Request body is not valid JSON';
   } else if (err.type === 'entity.too.large') {
     status = 413;
     message = 'Upload is too large (max 5 MB)';

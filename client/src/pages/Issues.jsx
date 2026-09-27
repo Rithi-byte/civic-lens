@@ -80,22 +80,22 @@ export default function Issues() {
           }}
           className="relative"
         >
-          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-400" />
-          <input className="input pl-9" placeholder="Search title, description or location…" value={q} onChange={(e) => setQ(e.target.value)} />
+          <Search className="absolute left-3 top-2.5 h-4 w-4 text-slate-500" />
+          <input className="input pl-9" aria-label="Search issues" placeholder="Search title, description or location…" value={q} onChange={(e) => setQ(e.target.value)} />
         </form>
-        <select className="input" value={filters.category} onChange={(e) => update({ category: e.target.value })}>
+        <select className="input" aria-label="Filter by category" value={filters.category} onChange={(e) => update({ category: e.target.value })}>
           <option value="">All categories</option>
           {Object.entries(CATEGORIES).map(([k, c]) => (
             <option key={k} value={k}>{c.label}</option>
           ))}
         </select>
-        <select className="input" value={filters.status} onChange={(e) => update({ status: e.target.value })}>
+        <select className="input" aria-label="Filter by status" value={filters.status} onChange={(e) => update({ status: e.target.value })}>
           <option value="">All statuses</option>
           {Object.entries(STATUSES).map(([k, s]) => (
             <option key={k} value={k}>{s.label}</option>
           ))}
         </select>
-        <select className="input" value={filters.sort} onChange={(e) => update({ sort: e.target.value })}>
+        <select className="input" aria-label="Sort issues" value={filters.sort} onChange={(e) => update({ sort: e.target.value })}>
           <option value="new">Newest first</option>
           <option value="top">Most upvoted</option>
           <option value="priority">Highest priority</option>

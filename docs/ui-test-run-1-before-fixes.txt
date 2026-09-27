@@ -1,0 +1,254 @@
+
+> civiclens@1.0.0 test:e2e
+> node --test --test-concurrency=1 e2e/*.test.mjs
+
+TAP version 13
+# Subtest: UI: public pages
+    # Subtest: UI01 home page loads with live stats and no JS errors
+    ok 1 - UI01 home page loads with live stats and no JS errors
+      ---
+      duration_ms: 1287.6074
+      ...
+    # Subtest: UI02 search updates results and the URL
+    ok 2 - UI02 search updates results and the URL
+      ---
+      duration_ms: 1945.8789
+      ...
+    # Subtest: UI03 category filter shows only that category
+    ok 3 - UI03 category filter shows only that category
+      ---
+      duration_ms: 1236.1216
+      ...
+    # Subtest: UI04 map view loads map tiles (not blocked)
+    ok 4 - UI04 map view loads map tiles (not blocked)
+      ---
+      duration_ms: 3796.4886
+      ...
+    # Subtest: UI05 unknown page shows a 404 screen
+    ok 5 - UI05 unknown page shows a 404 screen
+      ---
+      duration_ms: 1223.1408
+      ...
+    1..5
+ok 1 - UI: public pages
+  ---
+  duration_ms: 9915.2957
+  type: 'suite'
+  ...
+# Subtest: UI: login & access control
+    # Subtest: UI06 empty login form shows validation messages
+    ok 1 - UI06 empty login form shows validation messages
+      ---
+      duration_ms: 1374.3289
+      ...
+    # Subtest: UI07 wrong password shows an error and stays on login
+    ok 2 - UI07 wrong password shows an error and stays on login
+      ---
+      duration_ms: 2148.4447
+      ...
+    # Subtest: UI08 one-click demo login takes a citizen to My Reports
+    ok 3 - UI08 one-click demo login takes a citizen to My Reports
+      ---
+      duration_ms: 1354.2034
+      ...
+    # Subtest: UI09 citizen cannot open the admin dashboard
+    ok 4 - UI09 citizen cannot open the admin dashboard
+      ---
+      duration_ms: 1393.1547
+      ...
+    # Subtest: UI10 logged-out users are sent to login when reporting
+    ok 5 - UI10 logged-out users are sent to login when reporting
+      ---
+      duration_ms: 1316.5598
+      ...
+    1..5
+ok 2 - UI: login & access control
+  ---
+  duration_ms: 7588.5126
+  type: 'suite'
+  ...
+# Subtest: UI: full issue lifecycle
+    # Subtest: UI11 report form blocks submission when fields are missing
+    ok 1 - UI11 report form blocks submission when fields are missing
+      ---
+      duration_ms: 1340.5696
+      ...
+    # Subtest: UI12 citizen reports an issue with a photo and map pin
+    ok 2 - UI12 citizen reports an issue with a photo and map pin
+      ---
+      duration_ms: 2039.1592
+      ...
+    # Subtest: UI13 the new issue card shows its photo in the public list
+    ok 3 - UI13 the new issue card shows its photo in the public list
+      ---
+      duration_ms: 1192.4043
+      ...
+    # Subtest: UI14 roads officer sees it in the queue and acknowledges it
+    ok 4 - UI14 roads officer sees it in the queue and acknowledges it
+      ---
+      duration_ms: 1415.0363
+      ...
+    # Subtest: UI15 citizen sees the status timeline and a notification
+    ok 5 - UI15 citizen sees the status timeline and a notification
+      ---
+      duration_ms: 1357.3905
+      ...
+    1..5
+ok 3 - UI: full issue lifecycle
+  ---
+  duration_ms: 7345.3608
+  type: 'suite'
+  ...
+# Subtest: UI: admin
+    # Subtest: UI16 analytics dashboard renders all four charts
+    ok 1 - UI16 analytics dashboard renders all four charts
+      ---
+      duration_ms: 2366.4319
+      ...
+    1..1
+ok 4 - UI: admin
+  ---
+  duration_ms: 2366.8578
+  type: 'suite'
+  ...
+# Subtest: UI: responsive layout (390 px phone)
+    # Subtest: UI17 no sideways scrolling on home
+    ok 1 - UI17 no sideways scrolling on home
+      ---
+      duration_ms: 1844.7148
+      ...
+    # Subtest: UI17 no sideways scrolling on issues
+    ok 2 - UI17 no sideways scrolling on issues
+      ---
+      duration_ms: 1750.2875
+      ...
+    # Subtest: UI17 no sideways scrolling on login
+    ok 3 - UI17 no sideways scrolling on login
+      ---
+      duration_ms: 1729.7309
+      ...
+    # Subtest: UI17 no sideways scrolling on report
+    ok 4 - UI17 no sideways scrolling on report
+      ---
+      duration_ms: 1870.7204
+      ...
+    # Subtest: UI17 no sideways scrolling on admin
+    ok 5 - UI17 no sideways scrolling on admin
+      ---
+      duration_ms: 1941.8142
+      ...
+    1..5
+ok 5 - UI: responsive layout (390 px phone)
+  ---
+  duration_ms: 9138.4636
+  type: 'suite'
+  ...
+# Subtest: UI: accessibility (axe-core, serious + critical)
+    # Subtest: UI18 no serious accessibility violations on home
+    ok 1 - UI18 no serious accessibility violations on home
+      ---
+      duration_ms: 2250.9989
+      ...
+    # Subtest: UI18 no serious accessibility violations on issues
+    not ok 2 - UI18 no serious accessibility violations on issues
+      ---
+      duration_ms: 2149.8594
+      location: 'C:\\Users\\Admin\\Desktop\\4TH YEAR\\fsw\\vision2web\\e2e\\ui.test.mjs:233:5'
+      failureType: 'testCodeFailure'
+      error: |-
+        color-contrast (serious) x3: .-ml-2
+        select-name (critical) x3: select:nth-child(2)
+        + actual - expected
+        
+        + [
+        +   'color-contrast (serious) x3: .-ml-2',
+        +   'select-name (critical) x3: select:nth-child(2)'
+        + ]
+        - []
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected:
+      actual:
+        0: 'color-contrast (serious) x3: .-ml-2'
+        1: 'select-name (critical) x3: select:nth-child(2)'
+      operator: 'deepStrictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///C:/Users/Admin/Desktop/4TH%20YEAR/fsw/vision2web/e2e/ui.test.mjs:237:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:980:9)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:677:7)
+      ...
+    # Subtest: UI18 no serious accessibility violations on login
+    not ok 3 - UI18 no serious accessibility violations on login
+      ---
+      duration_ms: 1966.9881
+      location: 'C:\\Users\\Admin\\Desktop\\4TH YEAR\\fsw\\vision2web\\e2e\\ui.test.mjs:233:5'
+      failureType: 'testCodeFailure'
+      error: |-
+        color-contrast (serious) x5: .-ml-2
+        + actual - expected
+        
+        + [
+        +   'color-contrast (serious) x5: .-ml-2'
+        + ]
+        - []
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected:
+      actual:
+        0: 'color-contrast (serious) x5: .-ml-2'
+      operator: 'deepStrictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///C:/Users/Admin/Desktop/4TH%20YEAR/fsw/vision2web/e2e/ui.test.mjs:237:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:980:9)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:677:7)
+      ...
+    # Subtest: UI18 no serious accessibility violations on report
+    not ok 4 - UI18 no serious accessibility violations on report
+      ---
+      duration_ms: 2089.2703
+      location: 'C:\\Users\\Admin\\Desktop\\4TH YEAR\\fsw\\vision2web\\e2e\\ui.test.mjs:233:5'
+      failureType: 'testCodeFailure'
+      error: |-
+        color-contrast (serious) x6: .-ml-2
+        + actual - expected
+        
+        + [
+        +   'color-contrast (serious) x6: .-ml-2'
+        + ]
+        - []
+        
+      code: 'ERR_ASSERTION'
+      name: 'AssertionError'
+      expected:
+      actual:
+        0: 'color-contrast (serious) x6: .-ml-2'
+      operator: 'deepStrictEqual'
+      stack: |-
+        TestContext.<anonymous> (file:///C:/Users/Admin/Desktop/4TH%20YEAR/fsw/vision2web/e2e/ui.test.mjs:237:14)
+        process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+        async Test.run (node:internal/test_runner/test:980:9)
+        async Suite.processPendingSubtests (node:internal/test_runner/test:677:7)
+      ...
+    1..4
+not ok 6 - UI: accessibility (axe-core, serious + critical)
+  ---
+  duration_ms: 8458.4678
+  type: 'suite'
+  location: 'C:\\Users\\Admin\\Desktop\\4TH YEAR\\fsw\\vision2web\\e2e\\ui.test.mjs:229:1'
+  failureType: 'subtestsFailed'
+  error: '3 subtests failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..6
+# tests 25
+# suites 6
+# pass 22
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 47107.4132

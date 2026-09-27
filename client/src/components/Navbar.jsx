@@ -55,7 +55,7 @@ function Notifications() {
               className={`block border-b border-slate-50 px-4 py-3 text-sm hover:bg-slate-50 ${n.read ? 'text-slate-600' : 'bg-brand-50/60 text-slate-900'}`}
             >
               {n.message}
-              <span className="mt-0.5 block text-xs text-slate-400">{timeAgo(n.createdAt)}</span>
+              <span className="mt-0.5 block text-xs text-slate-500">{timeAgo(n.createdAt)}</span>
             </Link>
           ))}
         </div>

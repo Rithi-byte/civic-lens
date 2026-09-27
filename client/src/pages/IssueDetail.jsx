@@ -19,7 +19,7 @@ function StatusTimeline({ history }) {
           />
           <p className="text-sm font-semibold text-slate-900">{STATUSES[h.status]?.label}</p>
           {h.note && <p className="text-sm text-slate-600">{h.note}</p>}
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-slate-500">
             {h.by?.name ? `${h.by.name} · ` : ''}
             {new Date(h.at).toLocaleString()}
           </p>
@@ -38,7 +38,7 @@ function ManagePanel({ issue, onDone }) {
   const needsNote = status === 'resolved' || status === 'rejected';
 
   useEffect(() => {
-    if (user.role === 'admin') api.get('/users', { params: { role: 'authority' } }).then(({ data }) => setOfficers(data));
+    if (user.role === 'admin') api.get('/users', { params: { role: 'authority' } }).then(({ data }) => setOfficers(data.filter((o) => o.active)));
   }, [user.role]);
 
   const updateStatus = async (e) => {
@@ -255,7 +255,7 @@ export default function IssueDetail() {
                       {c.user && c.user.role !== 'citizen' && (
                         <span className="ml-2 rounded bg-brand-100 px-1.5 py-0.5 text-[10px] font-bold uppercase text-brand-700">Official</span>
                       )}
-                      <span className="ml-2 text-xs font-normal text-slate-400">{timeAgo(c.createdAt)}</span>
+                      <span className="ml-2 text-xs font-normal text-slate-500">{timeAgo(c.createdAt)}</span>
                     </p>
                     <p className="text-sm text-slate-700">{c.text}</p>
                   </div>

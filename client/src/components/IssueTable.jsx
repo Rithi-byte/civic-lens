@@ -63,7 +63,7 @@ export default function IssueTable({ issues, onChanged, showCategory = true }) {
               {showCategory && <td className="px-4 py-3"><CategoryBadge category={i.category} /></td>}
               <td className="px-4 py-3"><PriorityBadge priority={i.priority} /></td>
               <td className="px-4 py-3"><StatusBadge status={i.status} /></td>
-              <td className="px-4 py-3 text-slate-600">{i.assignedTo?.name || <span className="text-slate-400">—</span>}</td>
+              <td className="px-4 py-3 text-slate-600">{i.assignedTo?.name || <span className="text-slate-500">—</span>}</td>
               <td className="px-4 py-3 text-right">
                 {NEXT[i.status] ? (
                   <button onClick={() => advance(i)} disabled={busyId === i._id} className="btn-outline whitespace-nowrap px-3 py-1.5 text-xs">
