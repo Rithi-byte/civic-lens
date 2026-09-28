@@ -1,0 +1,195 @@
+TAP version 13
+# ✔ Seeded 10 users and 20 issues (password for all: password123)
+# Subtest: RBAC: reading
+    # Subtest: R01 anyone can browse public issues
+    ok 1 - R01 anyone can browse public issues
+      ---
+      duration_ms: 187.8478
+      ...
+    # Subtest: R02 "my reports" needs login
+    ok 2 - R02 "my reports" needs login
+      ---
+      duration_ms: 74.8978
+      ...
+    # Subtest: R03 department queue is for authorities only
+    ok 3 - R03 department queue is for authorities only
+      ---
+      duration_ms: 53.717
+      ...
+    # Subtest: R04 department queue only contains that department
+    ok 4 - R04 department queue only contains that department
+      ---
+      duration_ms: 12.4981
+      ...
+    # Subtest: R05 the "Take action" panel is only offered to people who can act
+    ok 5 - R05 the "Take action" panel is only offered to people who can act
+      ---
+      duration_ms: 105.1862
+      ...
+    # Subtest: R06 admin sees every status option; officers only the next workflow steps
+    ok 6 - R06 admin sees every status option; officers only the next workflow steps
+      ---
+      duration_ms: 29.1128
+      ...
+    # Subtest: R07 user list is admin-only
+    ok 7 - R07 user list is admin-only
+      ---
+      duration_ms: 65.8394
+      ...
+    # Subtest: R08 each user only ever sees their own notifications
+    ok 8 - R08 each user only ever sees their own notifications
+      ---
+      duration_ms: 46.5421
+      ...
+    # Subtest: R09 /auth/me returns the correct role for each account
+    ok 9 - R09 /auth/me returns the correct role for each account
+      ---
+      duration_ms: 32.7936
+      ...
+    # Subtest: R10 authority statistics are limited to their department
+    ok 10 - R10 authority statistics are limited to their department
+      ---
+      duration_ms: 42.3728
+      ...
+    1..10
+ok 1 - RBAC: reading
+  ---
+  duration_ms: 3001.842
+  type: 'suite'
+  ...
+# Subtest: RBAC: writing
+    # Subtest: W01 only citizens can report issues
+    ok 1 - W01 only citizens can report issues
+      ---
+      duration_ms: 436.7174
+      ...
+    # Subtest: W02 only the right department officer or admin can change status
+    ok 2 - W02 only the right department officer or admin can change status
+      ---
+      duration_ms: 113.2266
+      ...
+    # Subtest: W03 an officer from another department CAN act once the admin assigns them
+    ok 3 - W03 an officer from another department CAN act once the admin assigns them
+      ---
+      duration_ms: 43.1545
+      ...
+    # Subtest: W04 only admins can assign officers and set priority
+    ok 4 - W04 only admins can assign officers and set priority
+      ---
+      duration_ms: 53.8314
+      ...
+    # Subtest: W05 any logged-in user can upvote
+    ok 5 - W05 any logged-in user can upvote
+      ---
+      duration_ms: 75.9501
+      ...
+    # Subtest: W06 any logged-in user can comment
+    ok 6 - W06 any logged-in user can comment
+      ---
+      duration_ms: 92.7415
+      ...
+    # Subtest: W07 delete while "Reported": only the owner or admin
+    ok 7 - W07 delete while "Reported": only the owner or admin
+      ---
+      duration_ms: 93.1055
+      ...
+    # Subtest: W08 delete after acknowledgement: admin only (owner is locked out)
+    ok 8 - W08 delete after acknowledgement: admin only (owner is locked out)
+      ---
+      duration_ms: 74.9979
+      ...
+    # Subtest: W09 only admins can create officer accounts
+    ok 9 - W09 only admins can create officer accounts
+      ---
+      duration_ms: 149.1311
+      ...
+# (node:25256) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+    # Subtest: W10 only admins can activate / deactivate users
+    ok 10 - W10 only admins can activate / deactivate users
+      ---
+      duration_ms: 74.0764
+      ...
+    1..10
+ok 2 - RBAC: writing
+  ---
+  duration_ms: 1207.775
+  type: 'suite'
+  ...
+# Subtest: RBAC: privilege-escalation attempts
+    # Subtest: E01 public sign-up cannot create an authority or admin
+    ok 1 - E01 public sign-up cannot create an authority or admin
+      ---
+      duration_ms: 275.3163
+      ...
+    # Subtest: E02 a token with a faked "admin" role is ignored; the database role is used
+    ok 2 - E02 a token with a faked "admin" role is ignored; the database role is used
+      ---
+      duration_ms: 10.4752
+      ...
+    # Subtest: E03 a token signed with the wrong secret is rejected
+    ok 3 - E03 a token signed with the wrong secret is rejected
+      ---
+      duration_ms: 8.8738
+      ...
+    # Subtest: E04 an expired token is rejected
+    ok 4 - E04 an expired token is rejected
+      ---
+      duration_ms: 12.1264
+      ...
+    # Subtest: E05 a user cannot give themselves a role through the user-update API
+    ok 5 - E05 a user cannot give themselves a role through the user-update API
+      ---
+      duration_ms: 10.1947
+      ...
+# (node:25256) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+    # Subtest: E06 admins cannot change anyone’s role through the update API either (not an allowed field)
+    ok 6 - E06 admins cannot change anyone’s role through the update API either (not an allowed field)
+      ---
+      duration_ms: 12.6495
+      ...
+# (node:25256) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+# (node:25256) [MONGOOSE] Warning: mongoose: the `new` option for `findOneAndUpdate()` and `findOneAndReplace()` is deprecated. Use `returnDocument: 'after'` instead.
+    # Subtest: E07 deactivating a user takes effect immediately, even with a valid token
+    ok 7 - E07 deactivating a user takes effect immediately, even with a valid token
+      ---
+      duration_ms: 63.6531
+      ...
+# RBAC MATRIX (HTTP status per actor)
+# ┌─────────┬─────────────────────────────────────┬───────────┬───────┬──────────────┬──────────────┬──────────────┬───────┬─────────────┐
+# │ (index) │ action                              │ anonymous │ owner │ otherCitizen │ roadsOfficer │ waterOfficer │ admin │ deactivated │
+# ├─────────┼─────────────────────────────────────┼───────────┼───────┼──────────────┼──────────────┼──────────────┼───────┼─────────────┤
+# │ 0       │ 'GET /issues (public list)'         │ 200       │ 200   │ 200          │ 200          │ 200          │ 200   │ 200         │
+# │ 1       │ 'GET /issues?mine=true'             │ 401       │ 200   │ 200          │ 200          │              │ 200   │ 401         │
+# │ 2       │ 'GET /issues?scope=department'      │ 403       │ 403   │              │ 200          │ 200          │ 403   │             │
+# │ 3       │ 'GET /users'                        │ 401       │ 403   │              │ 403          │ 403          │ 200   │ 401         │
+# │ 4       │ 'POST /issues (report)'             │ 401       │ 201   │ 201          │ 403          │ 403          │ 403   │ 401         │
+# │ 5       │ 'PATCH /issues/:id/status'          │ 401       │ 403   │ 403          │ 200          │ 403          │ 200   │ 401         │
+# │ 6       │ 'PATCH /issues/:id/assign'          │ 401       │ 403   │ 403          │ 403          │ 403          │ 200   │ 401         │
+# │ 7       │ 'POST /issues/:id/upvote'           │ 401       │ 200   │ 200          │ 200          │ 200          │ 200   │ 401         │
+# │ 8       │ 'POST /issues/:id/comments'         │ 401       │ 201   │ 201          │ 201          │ 201          │ 201   │ 401         │
+# │ 9       │ 'DELETE /issues/:id (Reported)'     │ 401       │ 200   │ 403          │ 403          │ 403          │ 200   │ 401         │
+# │ 10      │ 'DELETE /issues/:id (Acknowledged)' │ 401       │ 403   │ 403          │ 403          │ 403          │ 200   │ 401         │
+# │ 11      │ 'POST /users (create officer)'      │ 401       │ 403   │              │ 403          │ 403          │ 201   │ 401         │
+# │ 12      │ 'PATCH /users/:id'                  │ 401       │ 403   │              │ 403          │ 403          │ 200   │ 401         │
+# └─────────┴─────────────────────────────────────┴───────────┴───────┴──────────────┴──────────────┴──────────────┴───────┴─────────────┘
+    # Subtest: E08 officers cannot bypass the workflow even on their own department
+    ok 8 - E08 officers cannot bypass the workflow even on their own department
+      ---
+      duration_ms: 14.6761
+      ...
+    1..8
+ok 3 - RBAC: privilege-escalation attempts
+  ---
+  duration_ms: 408.7292
+  type: 'suite'
+  ...
+1..3
+# tests 28
+# suites 3
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 37547.7986

@@ -1,0 +1,169 @@
+TAP version 13
+# Subtest: UI roles: page access
+    # Subtest: RP guest opening /report lands on /login
+    ok 1 - RP guest opening /report lands on /login
+      ---
+      duration_ms: 1283.0008
+      ...
+    # Subtest: RP citizen opening /report lands on /report
+    ok 2 - RP citizen opening /report lands on /report
+      ---
+      duration_ms: 1248.609
+      ...
+    # Subtest: RP authority opening /report lands on /dashboard
+    ok 3 - RP authority opening /report lands on /dashboard
+      ---
+      duration_ms: 1263.7629
+      ...
+    # Subtest: RP admin opening /report lands on /admin
+    ok 4 - RP admin opening /report lands on /admin
+      ---
+      duration_ms: 1556.1998
+      ...
+    # Subtest: RP guest opening /my-issues lands on /login
+    ok 5 - RP guest opening /my-issues lands on /login
+      ---
+      duration_ms: 1266.4539
+      ...
+    # Subtest: RP citizen opening /my-issues lands on /my-issues
+    ok 6 - RP citizen opening /my-issues lands on /my-issues
+      ---
+      duration_ms: 1275.056
+      ...
+    # Subtest: RP authority opening /my-issues lands on /dashboard
+    ok 7 - RP authority opening /my-issues lands on /dashboard
+      ---
+      duration_ms: 1259.5856
+      ...
+    # Subtest: RP admin opening /my-issues lands on /admin
+    ok 8 - RP admin opening /my-issues lands on /admin
+      ---
+      duration_ms: 1492.0695
+      ...
+    # Subtest: RP guest opening /dashboard lands on /login
+    ok 9 - RP guest opening /dashboard lands on /login
+      ---
+      duration_ms: 1272.8994
+      ...
+    # Subtest: RP citizen opening /dashboard lands on /my-issues
+    ok 10 - RP citizen opening /dashboard lands on /my-issues
+      ---
+      duration_ms: 1275.7441
+      ...
+    # Subtest: RP authority opening /dashboard lands on /dashboard
+    ok 11 - RP authority opening /dashboard lands on /dashboard
+      ---
+      duration_ms: 1261.3804
+      ...
+    # Subtest: RP admin opening /dashboard lands on /admin
+    ok 12 - RP admin opening /dashboard lands on /admin
+      ---
+      duration_ms: 1493.4774
+      ...
+    # Subtest: RP guest opening /admin lands on /login
+    ok 13 - RP guest opening /admin lands on /login
+      ---
+      duration_ms: 1254.4914
+      ...
+    # Subtest: RP citizen opening /admin lands on /my-issues
+    ok 14 - RP citizen opening /admin lands on /my-issues
+      ---
+      duration_ms: 1249.0342
+      ...
+    # Subtest: RP authority opening /admin lands on /dashboard
+    ok 15 - RP authority opening /admin lands on /dashboard
+      ---
+      duration_ms: 1260.8215
+      ...
+    # Subtest: RP admin opening /admin lands on /admin
+    ok 16 - RP admin opening /admin lands on /admin
+      ---
+      duration_ms: 1482.2512
+      ...
+    # Subtest: RP guest opening /login lands on /login
+    ok 17 - RP guest opening /login lands on /login
+      ---
+      duration_ms: 1263.5768
+      ...
+    # Subtest: RP citizen opening /login lands on /my-issues
+    ok 18 - RP citizen opening /login lands on /my-issues
+      ---
+      duration_ms: 1265.536
+      ...
+    # Subtest: RP authority opening /login lands on /dashboard
+    ok 19 - RP authority opening /login lands on /dashboard
+      ---
+      duration_ms: 1276.1405
+      ...
+    # Subtest: RP admin opening /login lands on /admin
+    ok 20 - RP admin opening /login lands on /admin
+      ---
+      duration_ms: 1573.7394
+      ...
+    # Subtest: RP guest opening /issues lands on /issues
+    ok 21 - RP guest opening /issues lands on /issues
+      ---
+      duration_ms: 1266.2487
+      ...
+    # Subtest: RP citizen opening /issues lands on /issues
+    ok 22 - RP citizen opening /issues lands on /issues
+      ---
+      duration_ms: 1275.9893
+      ...
+    # Subtest: RP authority opening /issues lands on /issues
+    ok 23 - RP authority opening /issues lands on /issues
+      ---
+      duration_ms: 1280.0099
+      ...
+    # Subtest: RP admin opening /issues lands on /issues
+    ok 24 - RP admin opening /issues lands on /issues
+      ---
+      duration_ms: 1248.754
+      ...
+    1..24
+ok 1 - UI roles: page access
+  ---
+  duration_ms: 32617.9722
+  type: 'suite'
+  ...
+# Subtest: UI roles: menus and buttons
+    # Subtest: RM1 each role sees only its own menu items
+    ok 1 - RM1 each role sees only its own menu items
+      ---
+      duration_ms: 5203.309
+      ...
+    # Subtest: RM2 "Take action" panel shows only for the responsible officer and admin
+    ok 2 - RM2 "Take action" panel shows only for the responsible officer and admin
+      ---
+      duration_ms: 5090.6879
+      ...
+    # Subtest: RM3 officer from another department sees no action panel
+    ok 3 - RM3 officer from another department sees no action panel
+      ---
+      duration_ms: 1257.5067
+      ...
+    # Subtest: RM4 only admins get officer-assignment and priority controls
+    ok 4 - RM4 only admins get officer-assignment and priority controls
+      ---
+      duration_ms: 2526.0368
+      ...
+    # Subtest: RM5 delete button: only admins on others’ issues
+    ok 5 - RM5 delete button: only admins on others’ issues
+      ---
+      duration_ms: 3847.7306
+      ...
+    1..5
+ok 2 - UI roles: menus and buttons
+  ---
+  duration_ms: 17926.0665
+  type: 'suite'
+  ...
+1..2
+# tests 29
+# suites 2
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 51333.5475
